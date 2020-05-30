@@ -1,0 +1,62 @@
+Bashのコマンド
+pwd		現在のディレクトリの位置を表示
+cd <folder>		フォルダに移動
+cd		HOMEのフォルダに移動
+cd ..		一つ上のフォルダに移動
+ls		ファイルの一覧
+mkdir		ディレクトリの作成
+rm -r <folder>		フォルダツリーの削除
+rm -rf <folder>		フォルダツリーの強制削除
+cat <file>		ファイルの内容の表示
+vi <file>		ファイルをviエディタで編集
+echo <word>		画面に表示
+>		リダイレクト
+
+
+
+Gitのコマンド
+
+よく使うもの
+git log		ログ(履歴)を表示
+git log --oneline		ログを1行表示
+git log --stat		ログと変更されたファイルを表示
+git status		gitの状態を表示
+git gui		GUIで操作に移る。GUIを閉じると戻る。
+git add <file>		ファイルをステージングする
+git add .		カレントディレクトリ内の新しいファイルをすべて追加
+git commit -m "message"		メッセージの内容でコミットする。メッセージを省略するとエディタが開く。
+git diff		カレントディレクトリ内で追跡されているファイルとステージングエリアのファイルもしくはリポジトリ内のファイルと比較する
+git diff --staged		ステージングエリアのファイルとリポジトリ内のファイルの比較をする
+git rm <file>		ファイルをステージングエリアから削除
+git mv <file1> <file2>		ファイル名をファイル1からファイル2に変更する
+git reset <file>		
+
+
+
+Gitの操作(よく使うもの以外)
+git clone <URL>		リポジトリのクローンを作る
+git ls-files		リポジトリ内のファイルのリスト表示
+git commit -a -m "メッセージ"		git addを実行してからコミットする
+git add --dry-run .		Git addで何が実行されるかを表示。.はaddの引数にできる。
+git add -p		ステージングエリアに追加すべき変更部分を手作業で選択する
+git log --shortstat --oneline		履歴をコミットごとに１行で表示、各コミットで変更されたファイルを１行で表示
+
+
+その他
+git --version		gitのバージョンを表示
+git config --global user.name "Your Name"		名前の登録
+git config --global user.email "Your E-mail@example.com"		メールアドレスの登録
+git config --list		gitのすべての設定を表示
+git config user.name		ユーザー名の表示
+git config user.email		ユーザーのメールアドレスの表示
+git config --global --unset <キー>		キーを削除
+git citool		変更をコミットするgitのGUIに移る
+gitk		gitkを起動
+git blame <file>		ファイルのプレーム出力を表示
+git help <command>		コマンドのヘルプ
+git <command> --help		コマンドのヘルプ
+git help -g		gitのガイドのリスト
+git help --glossary		gitの用語
+git help help		gitのヘルプシステムのヘルプ
+git help -a		利用できるコマンドのリスト(結構長い)
+git -paginate help -a		すべてのgitコマンドをページで表示
