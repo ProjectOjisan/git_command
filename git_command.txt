@@ -29,8 +29,8 @@ git diff		カレントディレクトリ内で追跡されているファイル�
 git diff --staged		ステージングエリアのファイルとリポジトリ内のファイルの比較をする
 git rm <file>		ファイルをステージングエリアから削除
 git mv <file1> <file2>		ファイル名をファイル1からファイル2に変更する
-git reset <file>		
-
+git reset <file>		ステージングエリアに加えたファイルの変更が取り消される。作業ディレクトリ内のファイルは変更されない。
+git restore --staged <file>		ステージングエリアからファイルの変更をどかす
 
 
 Gitの操作(よく使うもの以外)
@@ -40,6 +40,9 @@ git commit -a -m "メッセージ"		git addを実行してからコミットす�
 git add --dry-run .		Git addで何が実行されるかを表示。.はaddの引数にできる。
 git add -p		ステージングエリアに追加すべき変更部分を手作業で選択する
 git log --shortstat --oneline		履歴をコミットごとに１行で表示、各コミットで変更されたファイルを１行で表示
+git checkout -- <file>		最後にコミットしたファイルに戻す。ステージングエリアも消える。
+git log --parents		各コミットの親コミットのSHA1 IDを表示
+git log --parents --abbrev-commit		各コミットの親コミットを短縮されたSHA1 IDで表示(40文字のうちの最初の7文字)
 
 
 その他
