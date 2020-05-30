@@ -63,3 +63,7 @@ git help --glossary		gitの用語
 git help help		gitのヘルプシステムのヘルプ
 git help -a		利用できるコマンドのリスト(結構長い)
 git -paginate help -a		すべてのgitコマンドをページで表示
+
+
+他の場所からの情報
+git config --global core.quotepath false		日本語のファイル名の文字化けを直す
