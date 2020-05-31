@@ -12,14 +12,21 @@ vi <file>		ファイルをviエディタで編集
 echo <word>		画面に表示
 >		リダイレクト
 
+ページャの操作
+スペース		次ページ
+b		前ページ
+q		終了
 
 
 Gitのコマンド
 
 よく使うもの
 git log		ログ(履歴)を表示
+git log --patch		パッチ情報を示すリストを表示
 git log --oneline		ログを1行表示
-git log --stat		ログと変更されたファイルを表示
+git log --oneline <file>		ファイルに関連した1行ログの表示
+git log --stat		ログと変更されたファイルを表示。gitkの「パッチ」ビューと同様の出力。
+git log --patch-with-stat		--patchと--statの両方の出力。
 git status		gitの状態を表示
 git gui		GUIで操作に移る。GUIを閉じると戻る。
 git add <file>		ファイルをステージングする
@@ -31,6 +38,10 @@ git rm <file>		ファイルをステージングエリアから削除
 git mv <file1> <file2>		ファイル名をファイル1からファイル2に変更する
 git reset <file>		ステージングエリアに加えたファイルの変更が取り消される。作業ディレクトリ内のファイルは変更されない。
 git restore --staged <file>		ステージングエリアからファイルの変更をどかす
+git checkout <SHA1_ID>		作業ディレクトリ内のファイルをSHA1_IDのコミットのファイルに変更してHEADを移動する。
+git checkout <branch>		作業ディレクトリ内のファイルをブランチのファイルに変更してHEADを移動する。例えばmasterでmasterブランチ(の最新の状態)に戻る。
+git tag <tag> -m "メッセージ" <SHA1_ID>		<SHA1_ID>にタグをつける
+git tag		タグの一覧を表示
 
 
 Gitの操作(よく使うもの以外)
@@ -39,10 +50,12 @@ git ls-files		リポジトリ内のファイルのリスト表示
 git commit -a -m "メッセージ"		git addを実行してからコミットする
 git add --dry-run .		Git addで何が実行されるかを表示。.はaddの引数にできる。
 git add -p		ステージングエリアに追加すべき変更部分を手作業で選択する
-git log --shortstat --oneline		履歴をコミットごとに１行で表示、各コミットで変更されたファイルを１行で表示
 git checkout -- <file>		最後にコミットしたファイルに戻す。ステージングエリアも消える。
+git log --shortstat --oneline		履歴をコミットごとに１行で表示、各コミットで変更されたファイルを１行で表示
 git log --parents		各コミットの親コミットのSHA1 IDを表示
 git log --parents --abbrev-commit		各コミットの親コミットを短縮されたSHA1 IDで表示(40文字のうちの最初の7文字)
+git rev-parse <branch>		ブランチ名をSHA1 IDに変換する。例えばHEADとかmaster。
+git show <tag or branch>		タグやブランチの情報を表示
 
 
 その他
@@ -67,3 +80,4 @@ git -paginate help -a		すべてのgitコマンドをページで表示
 
 他の場所からの情報
 git config --global core.quotepath false		日本語のファイル名の文字化けを直す
+git config --global gui.encoding utf-8		gitkのファイル内のutf-8の文字化けを直す
