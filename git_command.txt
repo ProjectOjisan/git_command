@@ -42,6 +42,7 @@ git checkout <SHA1_ID>		作業ディレクトリ内のファイルをSHA1_IDの�
 git checkout <branch>		作業ディレクトリ内のファイルをブランチのファイルに変更してHEADを移動する。例えばmasterでmasterブランチ(の最新の状態)に戻る。
 git tag <tag> -m "メッセージ" <SHA1_ID>		<SHA1_ID>にタグをつける
 git tag		タグの一覧を表示
+git tag -d <tag>		タグを削除する
 
 
 Gitの操作(よく使うもの以外)
