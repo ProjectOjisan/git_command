@@ -56,6 +56,7 @@ git log --parents		各コミットの親コミットのSHA1 IDを表示
 git log --parents --abbrev-commit		各コミットの親コミットを短縮されたSHA1 IDで表示(40文字のうちの最初の7文字)
 git rev-parse <branch>		ブランチ名をSHA1 IDに変換する。例えばHEADとかmaster。
 git show <tag or branch>		タグやブランチの情報を表示
+git commit --amend -m "メッセージ"		直前のコミットのメッセージを修正
 
 
 その他
