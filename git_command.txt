@@ -39,10 +39,12 @@ git mv <file1> <file2>		ファイル名をファイル1からファイル2に変
 git reset <file>		ステージングエリアに加えたファイルの変更が取り消される。作業ディレクトリ内のファイルは変更されない。
 git restore --staged <file>		ステージングエリアからファイルの変更をどかす
 git checkout <SHA1_ID>		作業ディレクトリ内のファイルをSHA1_IDのコミットのファイルに変更してHEADを移動する。
-git checkout <branch>		作業ディレクトリ内のファイルをブランチのファイルに変更してHEADを移動する。例えばmasterでmasterブランチ(の最新の状態)に戻る。
+git checkout <branch>		ブランチに移る。作業ディレクトリ内のファイルは変化。HEADはブランチに移動。例えばmasterでmasterブランチ(の最新の状態)に戻る。
 git tag <tag> -m "メッセージ" <SHA1_ID>		<SHA1_ID>にタグをつける
 git tag		タグの一覧を表示
 git tag -d <tag>		タグを削除する
+git branch <branch>		ブランチを作る
+git branch		ブランチを表示
 
 
 Gitの操作(よく使うもの以外)
@@ -58,6 +60,7 @@ git log --parents --abbrev-commit		各コミットの親コミットを短縮さ
 git rev-parse <tag of branch>		タグやブランチ名をSHA1 IDに変換する。例えばHEADとかmaster。
 git show <tag or branch>		タグやブランチの情報を表示
 git commit --amend -m "メッセージ"		直前のコミットのメッセージを修正
+git log --graph --decorate --pretty=oneline --all --abbrev-commit		ブランチの履歴を図のように表示
 
 
 その他
@@ -78,6 +81,8 @@ git help --glossary		gitの用語
 git help help		gitのヘルプシステムのヘルプ
 git help -a		利用できるコマンドのリスト(結構長い)
 git -paginate help -a		すべてのgitコマンドをページで表示
+git config --global alias.lol "log --graph --decorate --pretty=oneline --all --abbrev-commit"
+		git lolでブランチの履歴を図のように表示する別名(alias)ができる(1回だけ実行すればよい)
 
 
 他の場所からの情報
