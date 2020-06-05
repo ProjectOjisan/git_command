@@ -53,6 +53,7 @@ git branch <branch> <SHA1_ID>		SHA1 IDを開始地点としてブランチを作
 git stash		現在の作業内容を一時的に保存する。別のブランチにcheckout可能になる。
 git stash list		stashで退避した作業のリスト出力
 git stash pop		stashで退避した作業を取り出す
+git merge <branch>		ブランチをマージする
 
 
 Gitの操作(よく使うもの以外)
@@ -70,6 +71,8 @@ git show <tag or branch>		タグやブランチの情報を表示
 git commit --amend -m "メッセージ"		直前のコミットのメッセージを修正
 git log --graph --decorate --pretty=oneline --all --abbrev-commit		リポジトリの履歴をすべてのブランチにわたって閲覧する
 git reflog		これまでに(git checkoutによって)行ったブランチ切替のすべての記録を表示する
+git diff <branch>...<branch>		2つのブランチの間の差分を表示
+git diff --name-status <branch>...<branch>		マージされるファイルを表示
 
 
 その他
