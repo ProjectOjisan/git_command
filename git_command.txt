@@ -40,6 +40,7 @@ git gui		GUIで操作に移る。GUIを閉じると戻る。
 git add <file>		ファイルをステージングする
 git add .		カレントディレクトリ内の新しいファイルをすべて追加
 git commit -m "message"		メッセージの内容でコミットする。メッセージを省略するとエディタが開く。
+git commit -a -m "メッセージ"		git addを実行してからコミットする
 git diff		カレントディレクトリ内で追跡されているファイルとステージングエリアのファイルもしくはリポジトリ内のファイルと比較する
 git diff --staged		ステージングエリアのファイルとリポジトリ内のファイルの比較をする
 git rm <file>		ファイルをステージングエリアから削除
@@ -51,7 +52,8 @@ git checkout <branch>		ブランチに移る。作業ディレクトリ内のフ
 git checkout -b <branch> <SHA1_ID or tag>		ブランチを作成してすぐにチェックアウトする(切り替える)
 git checkout -- <file>		変更したファイルの変更をなかったことにする
 git checkout -f <branch>		編集中の内容を破棄して強制的にブランチを切り替える
-git tag <tag> -m "メッセージ" <SHA1_ID>		<SHA1_ID>にタグをつける
+git tag <tag> -m "メッセージ" <SHA1_ID>		<SHA1_ID>にタグをつける。例えばHEAD^^はHEADから２つ前のコミットを表す。
+git tag -a <tag> -m "メッセージ" <SHA1_ID>		<SHA1_ID>にタグをつける。-m はなくてもできるらしい。
 git tag		タグの一覧を表示
 git tag -d <tag>		タグを削除する
 git branch <branch>		ブランチを作る
@@ -76,15 +78,19 @@ git clone source destination_dir		URLまたはローカルディレクトリの�
 git clone source		URLまたはローカルディレクトリのクローンディレクトリを作る。フォルダ名はソースと同じ。
 git remote		リモートの名前だけを表示(originが表示されるだけ)
 git remote -v show		リモートURLを表示。フェッチとプッシュの操作に使うオリジンがどこにあるかわかる。
+git remote -v show <remote>		リモートの情報を表示
 git ls-remote		リモートに存在するリファレンス群のSHA1 IDを表示。refs/headsはローカルのブランチ名、refs/tagsはローカルのタグ名。
 git ls-remote <origin>		リモートに存在するリファレンス群のSHA1 IDを表示。refs/headsはリモートのブランチ名、refs/tagsはリモートのタグ名。
 git ls-remote .		リモートに存在するリファレンス群のSHA1 IDを表示。refs/headsはローカルのブランチ名、refs/tagsはローカルのタグ名。.は現在のローカルリポジトリを表す。
+git push <remote> <branch or tag>		リモートにブランチまたはタグをプッシュする
+git push		リモートとローカルのブランチの関係がはっきりしているときに、リモートにブランチをプッシュできる
+git push --set-upstream <remote> <branch>		リモートに新しいブランチをプッシュする。新しいブランチについて１回実行すればよい。ローカルのブランチは予め作っておくこと。
+git push <remote> :<branch>		リモートのブランチを削除する。<source_branch>:<dest_branch>の前半が削除されている指定の仕方。リモートのどんなブランチも削除できてしまうので注意。
 
 
 Gitの操作(よく使うもの以外)
 git ls-files		リポジトリ内のファイルのリスト表示
 git ls-tree <tag or branch>		ブランチやタグに含まれるファイルのリスト。例えばHEAD。
-git commit -a -m "メッセージ"		git addを実行してからコミットする
 git add --dry-run .		Git addで何が実行されるかを表示。.はaddの引数にできる。
 git add -p		ステージングエリアに追加すべき変更部分を手作業で選択する
 git checkout -- <file>		最後にコミットしたファイルに戻す。ステージングエリアも消える。
@@ -108,6 +114,9 @@ git clone --depth <depth> source destination_dir		ヒストリーを<depth>で�
 git clone --depth 1 --no-single-branch source destination_dir		すべてのブランチを1つのコミットで構成されるリポジトリとして複製(ローカルでの複製にはfile://URL形式が必要)
 git remote rename <origin> <neme>		リモートの名前をnameに変更する。<origin>は変更前のリモートの名前：例えばorigin。
 git remote add <name> <remote>		リモートを新しく追加する。例えば2つめのリモートが追加できる。
+GIT_TRACE_PACKET=1 git ls-remote <remote>		リモートとのネットワーク通信の内容を表示する
+git push --force <remote> <branch>		プッシュできない状況でも強制的にプッシュする。git pullを使うべき。
+git push --tags		複数のタグをプッシュする。
 
 
 その他
@@ -130,6 +139,7 @@ git help -a		利用できるコマンドのリスト(結構長い)
 git -paginate help -a		すべてのgitコマンドをページで表示
 git config --global alias.lol "log --graph --decorate --pretty=oneline --all --abbrev-commit"
 		git lolでブランチの履歴を図のように表示する別名(alias)ができる(1回だけ実行すればよい)
+git config --global push.default simple		pushの動作のデフォルトをブランチ名が上流のブランチと同じものだけプッシュする。シェアするつもりのないブランチをリモートにプッシュするミスを予防できる。1回だけ設定。
 
 
 他の場所からの情報
