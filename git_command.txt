@@ -12,7 +12,7 @@ rm -rf <folder>		フォルダツリーの強制削除
 cat <file>		ファイルの内容の表示
 vi <file>		ファイルをviエディタで編集
 echo <word>		画面に表示
-echo <word> >> <file>	ファイルに文字を出力する
+echo "<message>" >> <file>	ファイルの行末に文字列を追加する
 touch <file>		空のファイルを作る
 cp -r source_dir destination_dir		フォルダを再帰的にコピーする(-rは再帰的にする)
 >		リダイレクト
@@ -31,6 +31,7 @@ git log --patch		パッチ情報を示すリストを表示
 git log --oneline		ログを1行表示
 git log --oneline <file>		ファイルに関連した1行ログの表示
 git log --oneline --all		すべてのブランチの１行履歴出力
+git log --decorate --oneline --all		すべてのブランチの１行履歴出力(上記と変わらないように見える)
 git log --stat		ログと変更されたファイルを表示。gitkの「パッチ」ビューと同様の出力。
 git log --patch-with-stat		--patchと--statの両方の出力。
 git log -n 1		最新のコミットだけを表示
@@ -86,6 +87,8 @@ git push <remote> <branch or tag>		リモートにブランチまたはタグを
 git push		リモートとローカルのブランチの関係がはっきりしているときに、リモートにブランチをプッシュできる
 git push --set-upstream <remote> <branch>		リモートに新しいブランチをプッシュする。新しいブランチについて１回実行すればよい。ローカルのブランチは予め作っておくこと。
 git push <remote> :<branch>		リモートのブランチを削除する。<source_branch>:<dest_branch>の前半が削除されている指定の仕方。リモートのどんなブランチも削除できてしまうので注意。
+git pull		リモートの変更をローカルに取り込む。git fetch と git merge FETCH_HEADを続けて実行するのと同じ。
+git pull --ff-only		fast-forwardマージでなければ自動マージを行わない条件でプル(フェッチ⁺マージ)を試みる。
 
 
 Gitの操作(よく使うもの以外)
