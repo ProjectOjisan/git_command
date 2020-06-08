@@ -87,6 +87,7 @@ git push <remote> <branch or tag>		リモートにブランチまたはタグを
 git push		リモートとローカルのブランチの関係がはっきりしているときに、リモートにブランチをプッシュできる
 git push --set-upstream <remote> <branch>		リモートに新しいブランチをプッシュする。新しいブランチについて１回実行すればよい。ローカルのブランチは予め作っておくこと。
 git push <remote> :<branch>		リモートのブランチを削除する。<source_branch>:<dest_branch>の前半が削除されている指定の仕方。リモートのどんなブランチも削除できてしまうので注意。
+git push --all		すべてのブランチをプッシュする
 git pull		リモートの変更をローカルに取り込む。git fetch と git merge FETCH_HEADを続けて実行するのと同じ。
 git pull --ff-only		fast-forwardマージでなければ自動マージを行わない条件でプル(フェッチ⁺マージ)を試みる。
 
