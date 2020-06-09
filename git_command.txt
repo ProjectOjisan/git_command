@@ -90,6 +90,8 @@ git push <remote> :<branch>		リモートのブランチを削除する。<sourc
 git push --all		すべてのブランチをプッシュする
 git pull		リモートの変更をローカルに取り込む。git fetch と git merge FETCH_HEADを続けて実行するのと同じ。
 git pull --ff-only		fast-forwardマージでなければ自動マージを行わない条件でプル(フェッチ⁺マージ)を試みる。
+git fetch		リモートリポジトリから新しいコミットが取り込まれ、リモート追跡ブランチが更新される。git pullの第１段階。
+git merge FETCH_HEAD		FETCH_HEADからの新しいコミットをカレントブランチにマージする。git fullの第２段階。
 
 
 Gitの操作(よく使うもの以外)
@@ -101,6 +103,11 @@ git checkout -- <file>		最後にコミットしたファイルに戻す。ス�
 git log --shortstat --oneline		履歴をコミットごとに１行で表示、各コミットで変更されたファイルを１行で表示
 git log --parents		各コミットの親コミットのSHA1 IDを表示
 git log --parents --abbrev-commit		各コミットの親コミットを短縮されたSHA1 IDで表示(40文字のうちの最初の7文字)
+git log --merges		マージコミットだけが表示される
+git log --oneline <file>		ファイルに影響を与えたコミットだけ表示。２つ指定もできる。
+git log --grep=<string>		stringを含むコミットだけを表示
+git log --since 01/01/2020		日付以降のコミットだけを表示
+git log --until 01/01/2020		日付までのコミットだけを表示
 git rev-parse <tag of branch>		タグやブランチ名をSHA1 IDに変換する。例えばHEADとかmaster。
 git show <tag or branch>		タグやブランチの情報を表示
 git commit --amend -m "メッセージ"		直前のコミットのメッセージを修正
@@ -109,6 +116,9 @@ git reflog		これまでに(git checkoutによって)行ったブランチ切替
 git diff <branch>...<branch>		2つのブランチの間の差分を表示
 git diff --name-status <branch>...<branch>		マージされるファイルを表示
 git merge-base <branch> <branch>		マージするときのベース(共通祖先)の表示
+git shortlog		コミットした人のリスト表示
+git shortlog -e		コミットした人のリスト表示に電子メールアドレスを追加
+git log --author="<name>"		名前や電子メールの一部を含む著者のコミットを表示
 
 
 リモート関係のコマンド(よく使うもの以外)
