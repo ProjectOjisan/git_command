@@ -146,6 +146,7 @@ git clone --depth <depth> source destination_dir		ヒストリーを<depth>で�
 git clone --depth 1 --no-single-branch source destination_dir		すべてのブランチを1つのコミットで構成されるリポジトリとして複製(ローカルでの複製にはfile://URL形式が必要)
 git remote rename <origin> <neme>		リモートの名前をnameに変更する。<origin>は変更前のリモートの名前：例えばorigin。
 git remote add <name> <remote>		リモートを新しく追加する。例えば2つめのリモートが追加できる。
+git remote remove <remote>		リモートの名前を削除する
 GIT_TRACE_PACKET=1 git ls-remote <remote>		リモートとのネットワーク通信の内容を表示する
 git push --force <remote> <branch>		プッシュできない状況でも強制的にプッシュする。git pullを使うべき。
 git push --tags		複数のタグをプッシュする。
