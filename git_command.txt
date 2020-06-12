@@ -79,6 +79,8 @@ gitk		gitkを起動
 gitk <branch> <branch> <branch>		表示するブランチを制限した状態でgitkを起動
 gitk --all		すべてのブランチを表示してgitkを起動。通常は現在のブランチのみ表示される。
 gitk <file>		fileに関係するコミットだけが出力された状態でgitkを起動する
+git notes add -m "<message>"		リポジトリの最後のコミットにメモを追加
+git notes remove		メモを削除
 
 
 リモート関係のよく使うコマンド
@@ -97,6 +99,7 @@ git push		リモートとローカルのブランチの関係がはっきりし�
 git push --set-upstream <remote> <branch>		リモートに新しいブランチをプッシュする。新しいブランチについて１回実行すればよい。ローカルのブランチは予め作っておくこと。
 git push <remote> :<branch>		リモートのブランチを削除する。<source_branch>:<dest_branch>の前半が削除されている指定の仕方。リモートのどんなブランチも削除できてしまうので注意。
 git push --all		すべてのブランチをプッシュする
+git push -u github <branch>		ブランチをGitHubにプッシュし、プッシュしたすべてのブランチに対して引数なしのgit pullなどのコマンドで使用できるリモート参照を追加する。
 git pull		リモートの変更をローカルに取り込む。git fetch と git merge FETCH_HEADを続けて実行するのと同じ。
 git pull --ff-only		fast-forwardマージでなければ自動マージを行わない条件でプル(フェッチ⁺マージ)を試みる。
 git fetch		リモートリポジトリから新しいコミットが取り込まれ、リモート追跡ブランチが更新される。git pullの第１段階。
