@@ -36,6 +36,9 @@ git log --stat		ログと変更されたファイルを表示。gitkの「パッ
 git log --patch-with-stat		--patchと--statの両方の出力。
 git log -n 1		最新のコミットだけを表示
 git log -1		git log -n 1の短縮形
+git log --stat HEAD^..HEAD		最新のコミットとその直前のコミット(HEAD^)との間で更新されたファイルを表示
+git log --patch HEAD^..HEAD		最新のコミットとその直前のコミット(HEAD^)との間で更新されたファイルを調べてdiffする。普通は--statでファイルを調べてdiffで個別に調べたいだろう。
+git log --graph --decorate --oneline <branch> <branch> <branch>		コミットの履歴の図を３つのブランチに絞って表示(3つでなくても良い)
 git status		gitの状態を表示
 git gui		GUIで操作に移る。GUIを閉じると戻る。
 git add <file>		ファイルをステージングする
@@ -63,6 +66,7 @@ git branch --all		すべてのブランチを表示
 git branch -v		ブランチの先端のSHA1 IDを表示
 git branch -d <branch>		ブランチを削除
 git branch <branch> <SHA1_ID>		SHA1 IDを開始地点としてブランチを作る
+git branch -r --contains <SHA1_ID>		SHA1_IDが属するブランチを出力する
 git stash		現在の作業内容を一時的に保存する。別のブランチにチェックアウト可能になる。
 git stash list		stashで退避した作業のリスト出力
 git stash pop		stashで退避した作業を取り出す
@@ -71,6 +75,10 @@ git mergetool		マージツールを起動(WinMergeとの連携の設定が必�
 git merge --abort		マージ作業を中止する
 git difftool		WinMergeでdiffする。(WinMergeとの連携の設定が必要)
 git difftool <branch>..<branch>		ブランチ間の比較(WinMergeで１ファイルづつ比較される)
+gitk		gitkを起動
+gitk <branch> <branch> <branch>		表示するブランチを制限した状態でgitkを起動
+gitk --all		すべてのブランチを表示してgitkを起動。通常は現在のブランチのみ表示される。
+gitk <file>		fileに関係するコミットだけが出力された状態でgitkを起動する
 
 
 リモート関係のよく使うコマンド
@@ -78,7 +86,8 @@ git branch --all		すべてのブランチを表示
 git clone source destination_dir		URLまたはローカルディレクトリのクローンディレクトリを作る
 git clone source		URLまたはローカルディレクトリのクローンディレクトリを作る。フォルダ名はソースと同じ。
 git remote		リモートの名前だけを表示(originが表示されるだけ)
-git remote -v show		リモートURLを表示。フェッチとプッシュの操作に使うオリジンがどこにあるかわかる。
+git remote -v 
+		リモートURLを表示。フェッチとプッシュの操作に使うオリジンがどこにあるかわかる。
 git remote -v show <remote>		リモートの情報を表示
 git ls-remote		リモートに存在するリファレンス群のSHA1 IDを表示。refs/headsはローカルのブランチ名、refs/tagsはローカルのタグ名。
 git ls-remote <origin>		リモートに存在するリファレンス群のSHA1 IDを表示。refs/headsはリモートのブランチ名、refs/tagsはリモートのタグ名。
@@ -110,6 +119,7 @@ git log --since 01/01/2020		日付以降のコミットだけを表示
 git log --until 01/01/2020		日付までのコミットだけを表示
 git rev-parse <tag of branch>		タグやブランチ名をSHA1 IDに変換する。例えばHEADとかmaster。
 git show <tag or branch>		タグやブランチの情報を表示
+git show <SHA1_ID>		SHA1_IDの内容を見る
 git commit --amend -m "メッセージ"		直前のコミットのメッセージを修正
 git log --graph --decorate --pretty=oneline --all --abbrev-commit		リポジトリの履歴をすべてのブランチにわたって閲覧する
 git reflog		これまでに(git checkoutによって)行ったブランチ切替のすべての記録を表示する
@@ -119,6 +129,8 @@ git merge-base <branch> <branch>		マージするときのベース(共通祖先
 git shortlog		コミットした人のリスト表示
 git shortlog -e		コミットした人のリスト表示に電子メールアドレスを追加
 git log --author="<name>"		名前や電子メールの一部を含む著者のコミットを表示
+git branch --column		branchのリストをコラムに分けて表示(1行に複数出力する)
+git grep <word>		wordを含むすべてのファイルを探す。すべてのファイルから探してくれる。
 
 
 リモート関係のコマンド(よく使うもの以外)
@@ -142,7 +154,6 @@ git config user.name		ユーザー名の表示
 git config user.email		ユーザーのメールアドレスの表示
 git config --global --unset <キー>		キーを削除
 git citool		変更をコミットするgitのGUIに移る
-gitk		gitkを起動
 git blame <file>		ファイルのプレーム出力を表示
 git help <command>		コマンドのヘルプ
 git <command> --help		コマンドのヘルプ
