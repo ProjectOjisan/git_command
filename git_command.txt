@@ -131,6 +131,9 @@ git shortlog -e		コミットした人のリスト表示に電子メールアド
 git log --author="<name>"		名前や電子メールの一部を含む著者のコミットを表示
 git branch --column		branchのリストをコラムに分けて表示(1行に複数出力する)
 git grep <word>		wordを含むすべてのファイルを探す。すべてのファイルから探してくれる。
+git gui blame <file>		fileのカレントブランチでのバージョンをguiで表示。ファイルの各行についてどのコミットで作成された行かがわかる。
+git gui blame <SHA1_ID> <file>		SHA1_IDでのfileをguiで表示。ファイルの各行についてどのコミットで作成された行かがわかる。
+git gui browser <tag>		カレントブランチでGitが認識している全部のファイルのリストを表示。tagは例えばmasterとかHEADとか。
 
 
 リモート関係のコマンド(よく使うもの以外)
