@@ -137,6 +137,7 @@ git grep <word>		wordを含むすべてのファイルを探す。すべての�
 git gui blame <file>		fileのカレントブランチでのバージョンをguiで表示。ファイルの各行についてどのコミットで作成された行かがわかる。
 git gui blame <SHA1_ID> <file>		SHA1_IDでのfileをguiで表示。ファイルの各行についてどのコミットで作成された行かがわかる。
 git gui browser <tag>		カレントブランチでGitが認識している全部のファイルのリストを表示。tagは例えばmasterとかHEADとか。
+git remote update		--mirrorオプションでクローンしたベアリポジトリを更新する
 
 
 リモート関係のコマンド(よく使うもの以外)
