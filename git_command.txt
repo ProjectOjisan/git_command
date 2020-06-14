@@ -89,6 +89,7 @@ git notes remove		メモを削除
 git branch --all		すべてのブランチを表示
 git clone source destination_dir		URLまたはローカルディレクトリのクローンディレクトリを作る
 git clone source		URLまたはローカルディレクトリのクローンディレクトリを作る。フォルダ名はソースと同じ。
+git clone --mirror <remote>		ミラーオプション付きでベアリポジトリを作成する
 git remote		リモートの名前だけを表示(originが表示されるだけ)
 git remote -v 
 		リモートURLを表示。フェッチとプッシュの操作に使うオリジンがどこにあるかわかる。
