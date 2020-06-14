@@ -83,6 +83,10 @@ gitk --all		すべてのブランチを表示してgitkを起動。通常は現�
 gitk <file>		fileに関係するコミットだけが出力された状態でgitkを起動する
 git notes add -m "<message>"		リポジトリの最後のコミットにメモを追加
 git notes remove		メモを削除
+git rebase <branch>		ベースになるコミットを<branch>に変更する。例えばnew_featureにいて、masterに別の修正が入ったときに、git rebase masterなどとする。
+git reflog		git内部のHEADの変更履歴を表示する。rebaseを間違って実行したときに戻すために調査できる。
+git reset --hard HEAD@{n}		HEADをHEAD@{n}に戻してrebase前に戻す。nはgit reflogで見つけた数字。
+git rebase --interactive <branch>		リベースを途中のコミットの処理を指示しながら進める。(コミットを1つ前に融合するときはsquashに修正。指示はlogと逆順。)<branch>はmasterなど。
 
 
 リモート関係のよく使うコマンド
@@ -90,6 +94,7 @@ git branch --all		すべてのブランチを表示
 git clone source destination_dir		URLまたはローカルディレクトリのクローンディレクトリを作る
 git clone source		URLまたはローカルディレクトリのクローンディレクトリを作る。フォルダ名はソースと同じ。
 git clone --mirror <remote>		ミラーオプション付きでベアリポジトリを作成する
+git remote update		--mirrorオプションでクローンしたベアリポジトリを更新する
 git remote		リモートの名前だけを表示(originが表示されるだけ)
 git remote -v 
 		リモートURLを表示。フェッチとプッシュの操作に使うオリジンがどこにあるかわかる。
@@ -140,7 +145,6 @@ git grep <word>		wordを含むすべてのファイルを探す。すべての�
 git gui blame <file>		fileのカレントブランチでのバージョンをguiで表示。ファイルの各行についてどのコミットで作成された行かがわかる。
 git gui blame <SHA1_ID> <file>		SHA1_IDでのfileをguiで表示。ファイルの各行についてどのコミットで作成された行かがわかる。
 git gui browser <tag>		カレントブランチでGitが認識している全部のファイルのリストを表示。tagは例えばmasterとかHEADとか。
-git remote update		--mirrorオプションでクローンしたベアリポジトリを更新する
 
 
 リモート関係のコマンド(よく使うもの以外)
