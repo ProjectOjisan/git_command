@@ -34,6 +34,7 @@ git log --oneline		ログを1行表示
 git log --oneline <file>		ファイルに関連した1行ログの表示
 git log --oneline --all		すべてのブランチの１行履歴出力
 git log --decorate --oneline --all		すべてのブランチの１行履歴出力(上記と変わらないように見える)
+git log --decorate --oneline --all --graph		すべてのブランチの１行履歴出力を分岐のグラフ付きで表示
 git log --stat		ログと変更されたファイルを表示。gitkの「パッチ」ビューと同様の出力。
 git log --patch-with-stat		--patchと--statの両方の出力。
 git log -n 1		最新のコミットだけを表示
@@ -87,6 +88,7 @@ git rebase <branch>		ベースになるコミットを<branch>に変更する。
 git reflog		git内部のHEADの変更履歴を表示する。rebaseを間違って実行したときに戻すために調査できる。
 git reset --hard HEAD@{n}		HEADをHEAD@{n}に戻してrebase前に戻す。nはgit reflogで見つけた数字。
 git rebase --interactive <branch>		リベースを途中のコミットの処理を指示しながら進める。(コミットを1つ前に融合するときはsquashに修正。指示はlogと逆順。)<branch>はmasterなど。
+git cherry-pick <SHA1_ID>		SHA1_IDのコピーを作る(ファイルが変更されコミットも追加される)
 
 
 リモート関係のよく使うコマンド
@@ -145,6 +147,7 @@ git grep <word>		wordを含むすべてのファイルを探す。すべての�
 git gui blame <file>		fileのカレントブランチでのバージョンをguiで表示。ファイルの各行についてどのコミットで作成された行かがわかる。
 git gui blame <SHA1_ID> <file>		SHA1_IDでのfileをguiで表示。ファイルの各行についてどのコミットで作成された行かがわかる。
 git gui browser <tag>		カレントブランチでGitが認識している全部のファイルのリストを表示。tagは例えばmasterとかHEADとか。
+git rebase --onto <branch>~2 <branch>~1 <branch>		途中のコミットを削除するときに使う。独習Git p.338参照(使う必要が生じないことを願う、とある)
 
 
 リモート関係のコマンド(よく使うもの以外)
