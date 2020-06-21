@@ -33,7 +33,7 @@ git log --patch		パッチ情報を示すリストを表示
 git log --oneline		ログを1行表示
 git log --oneline <file>		ファイルに関連した1行ログの表示
 git log --oneline --all		すべてのブランチの１行履歴出力
-git log --decorate --oneline --all		すべてのブランチの１行履歴出力(上記と変わらないように見える)
+git log --decorate --oneline --all		すべてのブランチの１行履歴出力(上記と変わらないように見える) --decorateはこのコミットを含むブランチを表示する(とあるがよくわからない)。
 git log --decorate --oneline --all --graph		すべてのブランチの１行履歴出力を分岐のグラフ付きで表示
 git log --stat		ログと変更されたファイルを表示。gitkの「パッチ」ビューと同様の出力。
 git log --patch-with-stat		--patchと--statの両方の出力。
@@ -70,12 +70,14 @@ git branch -v		ブランチの先端のSHA1 IDを表示
 git branch -d <branch>		ブランチを削除
 git branch <branch> <SHA1_ID>		SHA1 IDを開始地点としてブランチを作る
 git branch -r --contains <SHA1_ID>		SHA1_IDが属するブランチを出力する
+git branch -m <old branch> <new branch>		ローカルのブランチ名を変更する
 git stash		現在の作業内容を一時的に保存する。別のブランチにチェックアウト可能になる。
 git stash list		stashで退避した作業のリスト出力
 git stash pop		stashで退避した作業を取り出す
 git merge <branch>		ブランチを現在のブランチにマージする
 git mergetool		マージツールを起動(WinMergeとの連携の設定が必要)
 git merge --abort		マージ作業を中止する
+git merge --no-ff <branch>		fast-forward mergeをしないでマージする
 git difftool		WinMergeでdiffする。(WinMergeとの連携の設定が必要)
 git difftool <branch>..<branch>		ブランチ間の比較(WinMergeで１ファイルづつ比較される)
 gitk		gitkを起動
@@ -107,7 +109,7 @@ git ls-remote .		リモートに存在するリファレンス群のSHA1 IDを�
 git push <remote> <branch or tag>		リモートにブランチまたはタグをプッシュする
 git push		リモートとローカルのブランチの関係がはっきりしているときに、リモートにブランチをプッシュできる
 git push --set-upstream <remote> <branch>		リモートに新しいブランチをプッシュする。新しいブランチについて１回実行すればよい。ローカルのブランチは予め作っておくこと。
-git push <remote> :<branch>		リモートのブランチを削除する。<source_branch>:<dest_branch>の前半が削除されている指定の仕方。リモートのどんなブランチも削除できてしまうので注意。
+git push <remote> :<branch>		リモートのブランチを削除する。<source_branch>:<dest_branch>の前半が削除されている指定の仕方。リモートのどんなブランチも削除できてしまうので注意。リモートのブランチ名を変更するときはこのコマンドと新しいブランチのpushをする。
 git push --all		すべてのブランチをプッシュする
 git push -u github <branch>		ブランチをGitHubにプッシュし、プッシュしたすべてのブランチに対して引数なしのgit pullなどのコマンドで使用できるリモート参照を追加する。
 git pull		リモートの変更をローカルに取り込む。git fetch と git merge FETCH_HEADを続けて実行するのと同じ。
@@ -134,6 +136,7 @@ git rev-parse <tag of branch>		タグやブランチ名をSHA1 IDに変換する
 git show <tag or branch>		タグやブランチの情報を表示
 git show <SHA1_ID>		SHA1_IDの内容を見る
 git commit --amend -m "メッセージ"		直前のコミットのメッセージを修正
+git commit --allow-empty -m "message"		空のリポジトリのコミットを許可して、コミットする
 git log --graph --decorate --pretty=oneline --all --abbrev-commit		リポジトリの履歴をすべてのブランチにわたって閲覧する
 git reflog		これまでに(git checkoutによって)行ったブランチ切替のすべての記録を表示する
 git diff <branch>...<branch>		2つのブランチの間の差分を表示
